@@ -85,7 +85,7 @@ export function Navigation() {
 
         <div className="flex flex-col gap-3 border-t border-white/5 pt-6">
           <a
-            href="https://github.com"
+            href="https://github.com/arthurjunior250"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-cyan-400"
@@ -93,7 +93,7 @@ export function Navigation() {
             <span>GitHub</span>
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/dusabimana-arthur-junior-a8189820a/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-cyan-400"
@@ -101,7 +101,7 @@ export function Navigation() {
             <span>LinkedIn</span>
           </a>
           <a
-            href="https://twitter.com"
+            href="https://x.com/arthurjunior250"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-cyan-400"
