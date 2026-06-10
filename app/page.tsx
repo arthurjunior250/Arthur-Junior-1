@@ -16,7 +16,7 @@ export default function Page() {
         <AboutSection />
         <ExperienceTimeline />
         <SkillsSection />
-        {/* <ProjectsGrid /> */}
+        <ProjectsGrid />
         <ContactSection />
       </main>
       <Footer />
