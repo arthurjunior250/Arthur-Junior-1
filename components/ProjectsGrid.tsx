@@ -18,70 +18,27 @@ interface Project {
 const projects: Project[] = [
   {
     id: '1',
-    title: 'AI Content Generator',
-    description: 'Smart content generation platform using modern AI models',
+    title: 'ForexAI Trading Platform',
+    description: 'AI-powered content generation for forex trading insights',
     longDescription:
-      'A full-stack SaaS application that leverages cutting-edge AI models to generate high-quality content for various use cases. Features real-time generation, customizable templates, and batch processing capabilities.',
-    tags: ['Next.js', 'TypeScript', 'OpenAI API', 'Tailwind CSS', 'Prisma', 'Stripe'],
-    link: 'https://example.com',
-    github: 'https://github.com',
+      'ForexAI is an AI-driven content generation platform that provides real-time forex trading insights, market analysis, and personalized trading strategies. Built with Next.js, TypeScript, and OpenAI API, it delivers dynamic content tailored to traders’ preferences. The platform features a sleek UI designed with Tailwind CSS, secure data management using Prisma, and seamless payment integration via Stripe for premium features.',
+    tags: ['Next.js', 'TypeScript', 'OpenAI API', 'Tailwind CSS'],
+    link: 'https://forexai-trading-platform.netlify.app/',
+    // github: 'https://github.com',
     color: 'cyan',
   },
   {
     id: '2',
-    title: 'Real-Time Analytics Dashboard',
-    description: 'Live data visualization and monitoring platform',
+    title: 'Calm Trade Signal',
+    description: 'AI-powered forex trading signal generator',
     longDescription:
-      'Enterprise-grade analytics dashboard with real-time data streaming, custom visualization widgets, and predictive analytics. Processes 100K+ events per second with sub-100ms latency.',
-    tags: ['React', 'WebSockets', 'Python', 'PostgreSQL', 'D3.js', 'AWS'],
-    link: 'https://example.com',
-    github: 'https://github.com',
+      'Calm Trade Signal is an AI-powered forex trading signal generator that provides traders with real-time market insights and actionable trading signals. Built using React, JavaScript, and TensorFlow, the platform analyzes vast amounts of market data to identify trends and generate accurate trading signals. The user-friendly interface allows traders to customize their signal preferences and receive timely notifications, helping them make informed trading decisions.',
+    tags: ['React', 'JavaScript', 'TensorFlow', "yahoo finance API"],
+    link: 'https://calm-trade-signal.netlify.app/',
+    // github: 'https://github.com',
     color: 'blue',
   },
-  {
-    id: '3',
-    title: 'E-Commerce Platform',
-    description: 'Full-featured online store with checkout and inventory',
-    longDescription:
-      'Complete e-commerce solution with product catalog, shopping cart, payment processing, order management, and inventory tracking. Integrated with multiple payment gateways and shipping providers.',
-    tags: ['Next.js', 'Stripe', 'MongoDB', 'Node.js', 'Redis', 'Docker'],
-    link: 'https://example.com',
-    github: 'https://github.com',
-    color: 'cyan',
-  },
-  {
-    id: '4',
-    title: 'Social Collaboration App',
-    description: 'Real-time collaboration tool for remote teams',
-    longDescription:
-      'Features real-time collaborative editing, video conferencing integration, task management, and communication tools. Supports 10,000+ concurrent users with seamless performance.',
-    tags: ['React', 'Node.js', 'Socket.io', 'WebRTC', 'MongoDB', 'Docker'],
-    link: 'https://example.com',
-    github: 'https://github.com',
-    color: 'blue',
-  },
-  {
-    id: '5',
-    title: 'Personal Finance Tracker',
-    description: 'Smart expense tracking and financial planning app',
-    longDescription:
-      'Comprehensive personal finance management tool with budgeting, expense categorization, investment tracking, and AI-powered financial insights and recommendations.',
-    tags: ['Next.js', 'TypeScript', 'D3.js', 'Supabase', 'Tailwind CSS'],
-    link: 'https://example.com',
-    github: 'https://github.com',
-    color: 'cyan',
-  },
-  {
-    id: '6',
-    title: 'API Development Kit',
-    description: 'Open-source toolkit for building scalable APIs',
-    longDescription:
-      'Comprehensive SDK for rapid API development with built-in authentication, rate limiting, validation, and documentation generation. Used by 500+ developers.',
-    tags: ['TypeScript', 'Node.js', 'Jest', 'GraphQL', 'OpenAPI', 'NPM'],
-    link: 'https://example.com',
-    github: 'https://github.com',
-    color: 'blue',
-  },
+
 ]
 
 const colorClasses = {
@@ -125,7 +82,7 @@ export function ProjectsGrid({ onVisible }: ProjectsGridProps) {
       className="relative min-h-screen py-20 lg:ml-64 lg:py-32"
     >
       <div className="px-6 lg:px-12">
-        <div className="max-w-5xl space-y-12">
+        <div className="max-w-full space-y-12">
           {/* Section heading */}
           <div className={`space-y-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <h2 className="text-4xl font-bold text-white lg:text-5xl">Featured Projects</h2>
@@ -137,9 +94,8 @@ export function ProjectsGrid({ onVisible }: ProjectsGridProps) {
             {projects.map((project, index) => (
               <div
                 key={project.id}
-                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl backdrop-saturate-150 transition-all hover:border-white/20 hover:bg-white/[0.05] ${
-                  colorClasses[project.color]
-                }`}
+                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl backdrop-saturate-150 transition-all hover:border-white/20 hover:bg-white/[0.05] ${colorClasses[project.color]
+                  }`}
                 style={{
                   animationDelay: isVisible ? `${index * 0.1}s` : '0s',
                 }}
@@ -206,7 +162,7 @@ export function ProjectsGrid({ onVisible }: ProjectsGridProps) {
           <div className={`text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
             <p className="text-white/60 mb-4">Interested in seeing more?</p>
             <a
-              href="https://github.com"
+              href="https://github.com/arthurjunior250"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/[0.05] px-6 py-3 font-medium text-white transition-all hover:bg-white/[0.1] hover:border-white/40"
