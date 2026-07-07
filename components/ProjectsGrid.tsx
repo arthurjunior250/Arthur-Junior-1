@@ -36,6 +36,17 @@ const projects: Project[] = [
     tags: ['React', 'JavaScript', 'TensorFlow', "yahoo finance API"],
     link: 'https://calm-trade-signal.netlify.app/',
     // github: 'https://github.com',
+    color: 'purple',
+  },
+  {
+    id: '3',
+    title: 'Gold Signal',
+    description: 'AI-powered gold trading signal generator',
+    longDescription:
+      'Gold Signal is an AI-powered gold trading signal generator that provides traders with real-time market insights and actionable trading signals. Built using React, JavaScript, and TensorFlow, the platform analyzes vast amounts of market data to identify trends and generate accurate trading signals. The user-friendly interface allows traders to customize their signal preferences and receive timely notifications, helping them make informed trading decisions.',
+    tags: ['React', 'JavaScript', 'TensorFlow', "yahoo finance API"],
+    link: 'https://goldsignalbuddy.netlify.app/',
+    // github: 'https://github.com',
     color: 'blue',
   },
 
