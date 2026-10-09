@@ -89,10 +89,18 @@ export function ExperienceTimeline({ onVisible }: ExperienceTimelineProps) {
   const [activeExp, setActiveExp] = useState(experiences[0].id)
 
   useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting)
-        onVisible?.(entry.isIntersecting)
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          onVisible?.(true)
+          observer.disconnect()
+        }
       },
       { threshold: 0.1 }
     )
@@ -102,9 +110,7 @@ export function ExperienceTimeline({ onVisible }: ExperienceTimelineProps) {
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+      observer.disconnect()
     }
   }, [onVisible])
 
@@ -117,13 +123,13 @@ export function ExperienceTimeline({ onVisible }: ExperienceTimelineProps) {
       <div className="px-6 lg:px-12">
         <div className="max-full space-y-12">
           {/* Section heading */}
-          <div className={`space-y-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <div className={`space-y-4 ${isVisible ? 'animate-fade-in-up' : ''}`}>
             <h2 className="text-4xl font-bold text-white lg:text-5xl">Experience</h2>
             <div className="h-1 w-16 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400" />
           </div>
 
           {/* Timeline */}
-          <div className={`space-y-8 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className={`space-y-8 ${isVisible ? 'animate-fade-in' : ''}`}>
             {experiences.map((exp, index) => (
               <div
                 key={exp.id}

@@ -67,10 +67,18 @@ export function ProjectsGrid({ onVisible }: ProjectsGridProps) {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting)
-        onVisible?.(entry.isIntersecting)
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          onVisible?.(true)
+          observer.disconnect()
+        }
       },
       { threshold: 0.1 }
     )
@@ -80,9 +88,7 @@ export function ProjectsGrid({ onVisible }: ProjectsGridProps) {
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+      observer.disconnect()
     }
   }, [onVisible])
 
@@ -95,13 +101,13 @@ export function ProjectsGrid({ onVisible }: ProjectsGridProps) {
       <div className="px-6 lg:px-12">
         <div className="max-w-full space-y-12">
           {/* Section heading */}
-          <div className={`space-y-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <div className={`space-y-4 ${isVisible ? 'animate-fade-in-up' : ''}`}>
             <h2 className="text-4xl font-bold text-white lg:text-5xl">Featured Projects</h2>
             <div className="h-1 w-16 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400" />
           </div>
 
           {/* Projects grid */}
-          <div className={`grid gap-6 lg:grid-cols-2 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className={`grid gap-6 lg:grid-cols-2 ${isVisible ? 'animate-fade-in' : ''}`}>
             {projects.map((project, index) => (
               <div
                 key={project.id}
@@ -170,7 +176,7 @@ export function ProjectsGrid({ onVisible }: ProjectsGridProps) {
           </div>
 
           {/* CTA */}
-          <div className={`text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className={`text-center ${isVisible ? 'animate-fade-in' : ''}`}>
             <p className="text-white/60 mb-4">Interested in seeing more?</p>
             <a
               href="https://github.com/arthurjunior250"
