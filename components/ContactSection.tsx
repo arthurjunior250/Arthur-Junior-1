@@ -18,10 +18,18 @@ export function ContactSection({ onVisible }: ContactSectionProps) {
   const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting)
-        onVisible?.(entry.isIntersecting)
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          onVisible?.(true)
+          observer.disconnect()
+        }
       },
       { threshold: 0.1 }
     )
@@ -31,9 +39,7 @@ export function ContactSection({ onVisible }: ContactSectionProps) {
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+      observer.disconnect()
     }
   }, [onVisible])
 
@@ -66,7 +72,7 @@ export function ContactSection({ onVisible }: ContactSectionProps) {
       <div className="px-6 lg:px-12">
         <div className="max-full space-y-12">
           {/* Section heading */}
-          <div className={`space-y-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <div className={`space-y-4 ${isVisible ? 'animate-fade-in-up' : ''}`}>
             <h2 className="text-4xl font-bold text-white lg:text-5xl">Let&apos;s Connect</h2>
             <div className="h-1 w-16 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400" />
             <p className="max-w-xl text-white/70">
@@ -75,7 +81,7 @@ export function ContactSection({ onVisible }: ContactSectionProps) {
           </div>
 
           {/* Contact info grid */}
-          <div className={`grid gap-6 md:grid-cols-3 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className={`grid gap-6 md:grid-cols-3 ${isVisible ? 'animate-fade-in' : ''}`}>
             <a
               href="mailto:arthurjunior88741@gmail.com"
               className="glass group p-6 transition-all hover:bg-white/[0.08]"
@@ -113,7 +119,7 @@ export function ContactSection({ onVisible }: ContactSectionProps) {
 
           {/* Contact form */}
           {/* <div
-            className={`glass p-8 lg:p-12 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+            className={`glass p-8 lg:p-12 ${isVisible ? 'animate-fade-in' : ''}`}
           >
             <h3 className="mb-8 text-2xl font-bold text-white">Send me a message</h3>
 
